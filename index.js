@@ -2,8 +2,8 @@ const express = require('express');
 
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send('Hello, world! Klokken er ' + new Date().toLocaleTimeString());
+app.get('/deltagere-1', (req, res) => {
+    res.send('Jonas, Kristian, Herman, Martin ');
 });
 
 app.listen(3000, () => {
