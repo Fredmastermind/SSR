@@ -1,0 +1,35 @@
+<ul id="film">
+    <li>Henter data...</li>
+</ul>
+<br>
+<ul id="skuespillere">
+    <li>Henter data...</li>
+</ul>
+
+<script>
+    fetch('/skuespillere-og-filmer.json')
+    .then(response => response.json())
+    .then(data => {
+
+        let filmList = document.getElementById('film');
+        let skuespillereList = document.getElementById('skuespillere');
+        filmList.innerHTML = '';
+        skuespillereList.innerHTML = '';
+
+        data.forEach(row => {
+            let filmLi = document.createElement('li');
+            filmLi.textContent = row.tittel; 
+            filmList.appendChild(filmLi);
+        });
+
+        
+        data.forEach(row => {
+            let skuespillereLi = document.createElement('li');
+            skuespillereLi.textContent = row.navn; 
+            skuespillereList.appendChild(skuespillereLi);
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+</script>

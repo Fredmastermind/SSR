@@ -25,6 +25,11 @@ app.get('/bilmerker-json', async (req, res) => {
     res.json(result.rows);
 });
 
+app.get('/skuespillere-og-filmer.json', async (req, res) => {
+    const result = await pool.query('SELECT DISTINCT tittel, navn FROM filmer, skuespillere')
+    res.json(result.rows);
+})
+
 
 app.use(express.static('public'));
 

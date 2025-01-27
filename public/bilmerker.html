@@ -1,0 +1,18 @@
+<h1>Bilmerker</h1>
+<ul id="deltagere">
+    <li>Henter data...</li>
+</ul>
+
+<script>
+    fetch('/bilmerker-json')
+    .then( response => response.json() )
+    .then(data => {
+        let list = document.getElementById('deltagere');
+        list.innerHTML = '';
+        data.forEach(row => {
+            let li = document.createElement('li');
+            li.textContent = row.merke;
+            list.appendChild(li);
+        });
+    });
+</script>
